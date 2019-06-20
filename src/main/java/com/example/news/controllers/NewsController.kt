@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.security.auth.callback.ConfirmationCallback.OK
 
 @RestController
 class NewsController {
@@ -72,9 +71,10 @@ class NewsController {
     }
 
     /**
-     * Добавление комментраия в новость по id. Запрос по адресу localhost:3000/news/{id}
+     * Редактирование комментраия в новость по id. Запрос по адресу localhost:3000/news/{id}
      * @param id уникальный индентификатор новости
-     * @param comment комментарий
+     * @param article измененная новость
+     * @return измененная новость, 404 если новости не существует
      */
     @PutMapping("/news/{id}")
     internal fun editArticle(@PathVariable id: String, @RequestBody article: Article): ResponseEntity<Article> {
