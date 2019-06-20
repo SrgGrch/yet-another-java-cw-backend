@@ -1,0 +1,42 @@
+buildscript {
+	ext.kotlin_version = '1.3.21' // Required for Kotlin integration
+	ext.spring_boot_version = '2.1.0.RELEASE'
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
+		classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+		// See https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+	}
+}
+plugins {
+	id 'java'
+	id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'kotlin' // Required for Kotlin integration
+apply plugin: "kotlin-spring" // https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+apply plugin: 'org.springframework.boot'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+compileKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+}
