@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository
 /**
  * Интерфейс для работы с базой данных, CRUD - реализует все стандартные операции, такие как
  * Создание, получение, изменение, удаление и др.
+ *
+ * Таблица news
  */
 interface NewsRepository : CrudRepository<Article, String> {
     fun findOneById(id: String): Article

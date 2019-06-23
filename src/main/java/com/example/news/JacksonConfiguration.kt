@@ -13,6 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 class JacksonConfiguration : WebMvcConfigurerAdapter() {
 
+
+    /**
+     * Настройка парсера для работы с котлин
+     */
     override fun extendMessageConverters(converters: List<HttpMessageConverter<*>>) {
         for (httpConverter in converters) {
             if (httpConverter is MappingJackson2HttpMessageConverter) {

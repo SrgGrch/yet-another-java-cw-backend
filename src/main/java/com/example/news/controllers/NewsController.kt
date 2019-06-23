@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class NewsController {
 
-    @Autowired
+    @Autowired // Spring сам инциализирует эту переменную
     lateinit var service: NewsService
 
 
